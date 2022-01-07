@@ -6,10 +6,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Transaction {
 	
-	private int transactionId;
+	private Integer transactionId;
 	private String transactionType;
 	private String transactionDate;
 	@OneToOne(cascade=CascadeType.ALL)
@@ -18,5 +26,17 @@ public class Transaction {
 	public Wallet wallet;
 	private double amount;
 	private String description;
+	
+
+
+	@Override
+	public String toString() {
+		return "[transactionId=" + transactionId + ", transactionType=" + transactionType
+				+ ", transactionDate=" + transactionDate + ", wallet=" + wallet + ", amount=" + amount
+				+ ", description=" + description + "]";
+	}
+	
+	
+	
 
 }

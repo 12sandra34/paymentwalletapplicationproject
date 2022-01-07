@@ -13,7 +13,7 @@ public class Wallet {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int walletId;
+	private Integer walletId;
 	private BigDecimal balance;
 	
 	public Wallet() {
@@ -21,7 +21,7 @@ public class Wallet {
 		
 	}
 	
-	public Wallet(int walletId,BigDecimal balance) {
+	public Wallet(Integer walletId,BigDecimal balance) {
 		
 		super();
 		this.walletId=walletId;
@@ -29,7 +29,7 @@ public class Wallet {
 	}
 	
 	
-	public void setWALLETID(int walletId) {
+	public void setWALLETID(Integer walletId) {
 		
 		this.walletId=walletId;
 	}
