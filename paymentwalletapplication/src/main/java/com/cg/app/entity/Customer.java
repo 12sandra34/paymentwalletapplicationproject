@@ -25,18 +25,7 @@ public class Customer {
 	@JoinColumn(referencedColumnName="walletId")
 	private Wallet wallet;
 	
-	public Customer() {
-		
-	}
-
-	public Customer(String userName, String mobileNumber, String password, Wallet wallet) {
-		super();
-		this.userName = userName;
-		this.mobileNumber = mobileNumber;
-		this.password = password;
-		this.wallet = wallet;
-	}
-
+	
 	
 	@Override
 	public String toString() {
