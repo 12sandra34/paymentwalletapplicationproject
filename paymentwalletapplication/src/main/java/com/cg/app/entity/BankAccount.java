@@ -3,6 +3,7 @@ package com.cg.app.entity;
 import java.util.List;
 
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +32,11 @@ public class BankAccount {
 	
 	@OneToOne
 	private Wallet wallet;
+
+	public void setWallet(Wallet wallet2) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 

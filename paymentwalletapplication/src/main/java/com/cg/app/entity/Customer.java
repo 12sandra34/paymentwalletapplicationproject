@@ -1,9 +1,11 @@
 package com.cg.app.entity;
 
 import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -12,28 +14,29 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
 	
 	
-	private String userName;
 	@Id
-	private String mobileNumber;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer customerId;
+	
+	private String name;
+	private String mobileNo;
+	private String address;
+	private String email;
 	private String password;
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(referencedColumnName="walletId")
+	
+	@OneToOne(cascade = CascadeType.ALL)
 	private Wallet wallet;
-	
-	
-	
-	@Override
-	public String toString() {
-		return " [userName=" + userName + ", mobileNumber=" + mobileNumber + ", password=" + password
-				+ ", wallet=" + wallet + "]";
+
+	public Wallet getWallet() {
+		// TODO Auto-generated method stub
+		return null;
 	}
-	
-	
+
 	
 	
 
