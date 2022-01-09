@@ -1,10 +1,13 @@
 package com.cg.app.entity;
 
-import javax.persistence.CascadeType;
+import java.util.List;
+
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,24 +15,22 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class BankAccount {
-	
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
-	private String ifscCode;
-	private String bankName;
-	private double balance;
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName="walletId")
-	private Wallet wallet;
-
 	
-	@Override
-	public String toString() {
-		return " [accountNo=" + accountNo + ", ifscCode=" + ifscCode + ", bankName=" + bankName
-				+ ", balance=" + balance + "]";
-	}
-
+	private String bankName;
+	
+	private String ifscCode;
+	
+	private Double balance;
+	
+	@OneToOne
+	private Wallet wallet;
+	
 }
+
