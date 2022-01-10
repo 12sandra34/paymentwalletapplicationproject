@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.app.paymentwallet.entity.BillPayment;
+import com.cg.app.paymentwallet.entity.Transaction;
 import com.cg.app.paymentwallet.exception.BenificiaryDetailsNotFoundException;
 import com.cg.app.paymentwallet.exception.BillPaymentNotFoundException;
 import com.cg.app.paymentwallet.repository.BillPaymentRepository;
@@ -18,12 +19,15 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentRepository billPaymentRepo;
 	@Autowired
 	private TransactionRepository transactionRepo;
-
+	@Autowired
+    private Transaction Transaction;
 	@Override
 	public BillPayment addBillPayment(BillPayment billPayment) {
 		
+	
 		
 		return billPaymentRepo.save(billPayment);
+		
 	}
 
 	@Override

@@ -14,16 +14,19 @@ import com.cg.app.paymentwallet.entity.BillPayment;
 import com.cg.app.paymentwallet.exception.BenificiaryDetailsNotFoundException;
 import com.cg.app.paymentwallet.exception.BillPaymentNotFoundException;
 import com.cg.app.paymentwallet.service.BillPaymentService;
+import com.cg.app.paymentwallet.service.TransactionService;
 
 @RestController
 public class BillPaymentController {
 	
 	@Autowired
 	private BillPaymentService billPaymentService;
+	@Autowired
+	private TransactionService transactionService;
 	
-	@PostMapping("/addBillPayment")
+	@PostMapping("/addBillPayment{transactionId}")
 	
-	public BillPayment addBillPayment(@RequestBody BillPayment billPayment) {
+	public BillPayment addBillPayment(@RequestBody BillPayment billPayment,@PathVariable Integer transactionId)  {
 		
 		return billPaymentService.addBillPayment(billPayment);
 	}
