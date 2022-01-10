@@ -19,10 +19,16 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	private BillPaymentRepository billPaymentRepo;
 	@Autowired
 	private TransactionRepository transactionRepo;
-	@Autowired
-    private Transaction Transaction;
+	
 	@Override
 	public BillPayment addBillPayment(BillPayment billPayment) {
+		
+		
+		//Transaction transaction = new Transaction();
+	    //transaction.setTransactionType(transactionType);
+	   // transaction.setAmount(amount);
+        //transaction.setDescription(description);
+        
 		
 	
 		

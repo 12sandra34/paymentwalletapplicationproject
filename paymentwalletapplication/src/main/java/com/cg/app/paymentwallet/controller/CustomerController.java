@@ -69,5 +69,15 @@ public class CustomerController {
 		
 		return customerService.getAllCustomerList();
 
-}
+     }
+    
+    @PostMapping("/addAmount/{mobileNo}/{amount}")
+    public Customer addAmountToWalletHandler(@PathVariable String mobileNo,BigDecimal amount)throws CustomerNotFoundException{
+      
+    	
+    	
+    	return customerService.addAmountToWallet(mobileNo,amount);
+    	
+    	
+    }
 }

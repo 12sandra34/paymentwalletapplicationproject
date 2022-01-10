@@ -17,12 +17,12 @@ public Customer registerCustomer(Customer customer);
 	
 	public Customer deleteCustomerByMobileNumber(String mobileNo)throws CustomerNotFoundException;
 	
-	public Customer addAmountToWallet(String mobileNo, BigDecimal amount);
+	public Customer addAmountToWallet(String mobileNo, BigDecimal balance)throws CustomerNotFoundException;
 	
 	public List<Customer> getAllCustomerList();
 	
 	public  BigDecimal showBalance(String mobileNo)throws CustomerNotFoundException;
 	
-	public Customer fundTransfer(String sourceMobileNo,String targetMobileNo, BigDecimal amount);
+	public Customer fundTransfer(String sourceMobileNo,String targetMobileNo, BigDecimal amount)throws CustomerNotFoundException;
 
 }

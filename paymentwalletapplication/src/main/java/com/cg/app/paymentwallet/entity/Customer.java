@@ -33,7 +33,8 @@ public class Customer {
 	@Size(min=6,max=10)
 	private String password;
 	@OneToOne(cascade = CascadeType.ALL)
-	
 	private Wallet wallet;
+	
+	}
 
-}
+

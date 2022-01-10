@@ -1,5 +1,6 @@
 package com.cg.app.paymentwallet.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +30,7 @@ public class Transaction {
 	private String transactionType;
 	@CreationTimestamp
 	private LocalDateTime transactionDate;
-	private Double amount;
+	private BigDecimal amount;
 	@NotNull
 	private String description;
 	
