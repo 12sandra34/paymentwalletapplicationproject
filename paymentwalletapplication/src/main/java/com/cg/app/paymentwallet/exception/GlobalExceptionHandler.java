@@ -1,4 +1,4 @@
-/*package com.cg.app.paymentwallet.exception;
+package com.cg.app.paymentwallet.exception;
 
 import java.time.LocalDateTime;
 
@@ -57,7 +57,7 @@ public class GlobalExceptionHandler {
 		err.setDetails(wr.getDescription(false));
 	*/
 		
-		/*MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(), e.getMessage(), wr.getDescription(false));
+	MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(), e.getMessage(), wr.getDescription(false));
 		
 		
 		
@@ -71,4 +71,4 @@ public class GlobalExceptionHandler {
 
 	
 
-}*/
+}
