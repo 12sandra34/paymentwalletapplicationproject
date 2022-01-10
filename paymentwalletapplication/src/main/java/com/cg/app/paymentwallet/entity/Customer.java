@@ -26,7 +26,7 @@ public class Customer {
 	private String email;
 	private String password;
 	@OneToOne(cascade = CascadeType.ALL)
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	
 	private Wallet wallet;
 
 }

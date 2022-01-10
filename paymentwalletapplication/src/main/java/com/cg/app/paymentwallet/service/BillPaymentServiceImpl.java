@@ -9,15 +9,19 @@ import com.cg.app.paymentwallet.entity.BillPayment;
 import com.cg.app.paymentwallet.exception.BenificiaryDetailsNotFoundException;
 import com.cg.app.paymentwallet.exception.BillPaymentNotFoundException;
 import com.cg.app.paymentwallet.repository.BillPaymentRepository;
+import com.cg.app.paymentwallet.repository.TransactionRepository;
 
 @Service
 public class BillPaymentServiceImpl implements BillPaymentService {
 	
 	@Autowired
 	private BillPaymentRepository billPaymentRepo;
+	@Autowired
+	private TransactionRepository transactionRepo;
 
 	@Override
 	public BillPayment addBillPayment(BillPayment billPayment) {
+		
 		
 		return billPaymentRepo.save(billPayment);
 	}

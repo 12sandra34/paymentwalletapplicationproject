@@ -1,10 +1,14 @@
 package com.cg.app.paymentwallet.entity;
 
 import java.time.LocalDateTime;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import org.hibernate.annotations.CreationTimestamp;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +26,7 @@ public class BillPayment {
 	private Double amount;
 	@CreationTimestamp
 	private LocalDateTime paymentDate;
-    private String billtype;
+    private BillType billtype;
+    @OneToOne(cascade=CascadeType.ALL)
+    private Wallet wallet;
 }
