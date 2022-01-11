@@ -3,7 +3,7 @@ package com.cg.app.paymentwallet.service;
 import java.math.BigDecimal;
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -71,16 +71,20 @@ public class CustomerServiceImpl implements CustomerService {
 	public Customer addAmountToWallet(String mobileNo, BigDecimal amount) throws CustomerNotFoundException {
 		
 		
-		//Customer customer = customerRepo.findByMobileNo(mobileNo);
-		//if(customer==null) {
-			//throw new CustomerNotFoundException("customer does not exist");
-		//}
-		//else {
+		/*Customer customer = customerRepo.findByMobileNo(mobileNo);
+		if(customer==null) {
+			throw new CustomerNotFoundException("customer does not exist");
+		}
+		else {
 		
+			return  customerRepo.addAmount(amount);
+			
 			
 	 
-		//}
+		}*/
+		
 		return null;
+		
 		
 	}
 	
@@ -117,14 +121,17 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	}
 
+	
+	
+
 	@Override
 	public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount) throws CustomerNotFoundException {
 		
-		Customer customer1 = customerRepo.findByMobileNo(sourceMobileNo); 
+		/*Customer customer1 = customerRepo.findByMobileNo(sourceMobileNo); 
 		Customer customer2 = customerRepo.findByMobileNo(targetMobileNo);
 		if(customer1==null&&customer2==null) {
 			 throw new CustomerNotFoundException("Customer doesnot exist");
-		}
+		}*/
 		
 		
 			

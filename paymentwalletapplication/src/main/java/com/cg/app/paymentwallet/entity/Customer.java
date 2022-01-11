@@ -10,6 +10,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.checkerframework.checker.regex.qual.Regex;
+import org.springframework.beans.factory.annotation.Value;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +33,7 @@ public class Customer {
 	private String mobileNo;
 	@Email
 	private String email;
+	@NotNull(message="entering name is mandatory")
 	@Size(min=6,max=10)
 	private String password;
 	@OneToOne(cascade = CascadeType.ALL)

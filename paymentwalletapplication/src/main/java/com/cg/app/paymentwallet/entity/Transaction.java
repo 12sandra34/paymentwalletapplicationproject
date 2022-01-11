@@ -30,7 +30,7 @@ public class Transaction {
 	private String transactionType;
 	@CreationTimestamp
 	private LocalDateTime transactionDate;
-	private BigDecimal amount;
+	private Double amount;
 	@NotNull
 	private String description;
 	

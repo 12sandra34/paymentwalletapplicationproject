@@ -24,7 +24,7 @@ public class BenificiaryDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer benificiaryId;
-	@NotNull
+	@NotNull(message="name is mandatory")
     private String name;
 	@Size(min=10,max=10)
 	private String mobileNumber;

@@ -22,9 +22,9 @@ public class BankAccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
-	@NotNull
+	@NotNull(message="bankname is mandatory")
 	private String bankName;
-	@NotNull
+	@NotNull(message="ifsc code is mandatory")
 	private String ifscCode;
 	private Double balance;
 	@OneToOne(cascade = CascadeType.ALL)

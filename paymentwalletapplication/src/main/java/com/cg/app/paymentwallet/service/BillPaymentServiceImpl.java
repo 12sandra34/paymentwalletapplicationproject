@@ -24,10 +24,10 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public BillPayment addBillPayment(BillPayment billPayment) {
 		
 		
-		//Transaction transaction = new Transaction();
-	    //transaction.setTransactionType(transactionType);
-	   // transaction.setAmount(amount);
-        //transaction.setDescription(description);
+		/*Transaction transaction = new Transaction();
+	    transaction.setTransactionType(transactionType);
+	    transaction.setAmount(amount);
+        transaction.setDescription(description);*/
         
 		
 	
@@ -46,7 +46,7 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public BillPayment viewBill(Integer billId) throws BillPaymentNotFoundException{
 	
 		return billPaymentRepo.findById(billId)
-				.orElseThrow(() -> new BillPaymentNotFoundException("Benificiary not exist..") );
+				.orElseThrow(() -> new BillPaymentNotFoundException("bill not exist..") );
 	}
 
 }

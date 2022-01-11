@@ -29,8 +29,7 @@ public class BankAccountController {
 	
 	@Autowired
 	private BankAccountService bankService;
-	@Autowired
-	private CustomerService customerService;
+	
 	
 	
 	@PostMapping("/createBankAccount")

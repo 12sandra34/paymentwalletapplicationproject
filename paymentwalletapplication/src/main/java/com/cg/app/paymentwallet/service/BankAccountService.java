@@ -10,7 +10,7 @@ import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 
 public interface BankAccountService {
 	
-public BankAccount addAccount(BankAccount account);
+    public BankAccount addAccount(BankAccount account);
 	
 	public BankAccount removeBankAccount(int accno)throws AccountNotFoundException;
 	
