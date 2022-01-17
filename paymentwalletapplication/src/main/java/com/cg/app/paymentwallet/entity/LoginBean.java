@@ -13,10 +13,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginBean {
-	@NotNull
+	
 	private String username;
-	@NotNull
-	@Size(min=6,max=10)
-	private String password;
+    private String password;
 
 }

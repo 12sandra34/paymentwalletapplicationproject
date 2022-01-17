@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,9 +23,11 @@ public class BankAccount {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
-	@NotNull(message="bankname is mandatory")
+	@NotNull
+	@Size(min=1, max=100,message="bankname is mandatory")
 	private String bankName;
-	@NotNull(message="ifsc code is mandatory")
+	@NotNull
+	@Size(min=11,max=11,message="ifsc code is mandatory")
 	private String ifscCode;
 	private Double balance;
 	@OneToOne(cascade = CascadeType.ALL)

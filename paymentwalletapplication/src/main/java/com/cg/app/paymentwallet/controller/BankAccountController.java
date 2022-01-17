@@ -2,8 +2,9 @@ package com.cg.app.paymentwallet.controller;
 
 import java.util.List;
 
-import javax.security.auth.login.AccountNotFoundException;
 
+import javax.security.auth.login.AccountNotFoundException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,9 +21,12 @@ import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 import com.cg.app.paymentwallet.service.BankAccountService;
 import com.cg.app.paymentwallet.service.CustomerService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 @RestController
+@Slf4j
 public class BankAccountController {
 	
 	
@@ -33,7 +37,7 @@ public class BankAccountController {
 	
 	
 	@PostMapping("/createBankAccount")
-	public BankAccount createAccountHandler(@RequestBody BankAccount account) {
+	public BankAccount createAccountHandler(@Valid @RequestBody BankAccount account) {
 	
 		return  bankService.addAccount(account);
 		
@@ -54,7 +58,9 @@ public class BankAccountController {
 			
 	public BankAccount removeBankAccountHandler(@PathVariable Integer accountNo ) throws AccountNotFoundException,CustomerNotFoundException {
 		
-		return bankService.removeBankAccount(accountNo);
+		return bankService.removeBankAccount(accountNo); 
+         
+		 
 	}
 	
 	

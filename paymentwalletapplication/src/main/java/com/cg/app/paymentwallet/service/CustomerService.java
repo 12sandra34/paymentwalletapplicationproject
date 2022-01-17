@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.cg.app.paymentwallet.entity.Customer;
+import com.cg.app.paymentwallet.entity.Wallet;
 import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 
 
@@ -15,7 +16,7 @@ public Customer registerCustomer(Customer customer);
 	
 	public Customer authenticateCustomer(String mobileNumber, String password)throws CustomerNotFoundException;
 	
-	public Customer deleteCustomerByMobileNumber(String mobileNo)throws CustomerNotFoundException;
+	public Customer deleteCustomerById(Integer customerId)throws CustomerNotFoundException;
 	
 	public Customer addAmountToWallet(String mobileNo, BigDecimal balance)throws CustomerNotFoundException;
 	

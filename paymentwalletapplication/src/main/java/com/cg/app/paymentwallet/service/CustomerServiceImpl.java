@@ -2,12 +2,20 @@ package com.cg.app.paymentwallet.service;
 
 import java.math.BigDecimal;
 
+
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.checkerframework.checker.nullness.Opt;
+import org.hibernate.TransactionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+
 import com.cg.app.paymentwallet.entity.Customer;
+import com.cg.app.paymentwallet.entity.Wallet;
 import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 import com.cg.app.paymentwallet.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +27,10 @@ public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepo;
 	
-
+	
+	
+	
+    //customer registration
 	@Override
 	public Customer registerCustomer(Customer customer) {
          
@@ -31,64 +42,80 @@ public class CustomerServiceImpl implements CustomerService {
 
 		return savedCustomer;
 	}
-
+	
+	
+    //customer login authentication
 	@Override
-	public Customer authenticateCustomer(String mobileNumber, String password) throws CustomerNotFoundException {
+	public Customer authenticateCustomer(String name, String password) throws CustomerNotFoundException {
 		
         log.info("authenticating customer....");
 		
-	 	Customer customer= customerRepo.validateCustomer(mobileNumber, password);
+	 	Customer customer= customerRepo.validateCustomer(name, password);
 		
 	 	if(customer == null)
 	 	{
 	 		log.debug("invalid username or password...");
 	 		throw new CustomerNotFoundException("Invlaid username or password...");
 	 	}else
+	 		
 	 		return customer;
 	}
-
+	
+	
+    //deleting a customer details
 	@Override
-	public Customer deleteCustomerByMobileNumber(String mobileNo) throws CustomerNotFoundException {
+	public Customer deleteCustomerById(Integer customerId) throws CustomerNotFoundException {
 		
-		Customer customer =customerRepo.deleteByMobileNo(mobileNo);
-		if(customer==null) {
-			throw new CustomerNotFoundException("Customer does not exist");
+		log.info("inside the delete module");
+		Optional<Customer> opt =customerRepo.findById(customerId);
+		if(opt.isPresent()) {
 			
+			Customer customer = opt.get();
 			
-		}
-		
-		else {
-			 
+			customerRepo.delete(customer);
+			
 			return customer;
 			
-			
 		}
-	}
-	
-	
-
-	@Override
-	public Customer addAmountToWallet(String mobileNo, BigDecimal amount) throws CustomerNotFoundException {
 		
-		
-		/*Customer customer = customerRepo.findByMobileNo(mobileNo);
-		if(customer==null) {
-			throw new CustomerNotFoundException("customer does not exist");
-		}
 		else {
+			
+			throw new CustomerNotFoundException("customer does not exist with customerId:"+customerId);
+		}
+	}
+	
+	
+    
+	//adding amount to wallet
+	@Override
+	@Transactional
+	public Customer addAmountToWallet(String mobileNO , BigDecimal amount) throws CustomerNotFoundException {
 		
-			return  customerRepo.addAmount(amount);
+		Customer customer= customerRepo.findByMobileNo(mobileNO);
+		
+			if(customer==null) {
+			
+				throw new CustomerNotFoundException("customer does not exist");
+			
+			}
+			else {
+				
+				customer.getWallet().getBalance().add(amount);
+				return customer;
+			}
 			
 			
-	 
-		}*/
 		
-		return null;
+		
+		
+		
+		
 		
 		
 	}
 	
-
+    
+	//getting all customer list
 	@Override
 	public List<Customer> getAllCustomerList() {
 		return customerRepo.findAll();
@@ -97,7 +124,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	
 	
-
+    //view balance
 	@Override
 	public BigDecimal showBalance(String mobileNo) throws CustomerNotFoundException {
 		
@@ -123,18 +150,11 @@ public class CustomerServiceImpl implements CustomerService {
 
 	
 	
-
+    //fund transferring
 	@Override
 	public Customer fundTransfer(String sourceMobileNo, String targetMobileNo, BigDecimal amount) throws CustomerNotFoundException {
 		
-		/*Customer customer1 = customerRepo.findByMobileNo(sourceMobileNo); 
-		Customer customer2 = customerRepo.findByMobileNo(targetMobileNo);
-		if(customer1==null&&customer2==null) {
-			 throw new CustomerNotFoundException("Customer doesnot exist");
-		}*/
 		
-		
-			
 			
 			
 		

@@ -24,9 +24,9 @@ public class BillPaymentController {
 	@Autowired
 	private TransactionService transactionService;
 	
-	@PostMapping("/addBillPayment{transactionId}")
+	@PostMapping("/addBillPayment")
 	
-	public BillPayment addBillPayment(@RequestBody BillPayment billPayment,@PathVariable Integer transactionId)  {
+	public BillPayment addBillPayment(@RequestBody BillPayment billPayment)  {
 		
 		return billPaymentService.addBillPayment(billPayment);
 	}

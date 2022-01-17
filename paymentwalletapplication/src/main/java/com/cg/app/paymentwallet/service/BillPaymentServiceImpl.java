@@ -24,11 +24,6 @@ public class BillPaymentServiceImpl implements BillPaymentService {
 	public BillPayment addBillPayment(BillPayment billPayment) {
 		
 		
-		/*Transaction transaction = new Transaction();
-	    transaction.setTransactionType(transactionType);
-	    transaction.setAmount(amount);
-        transaction.setDescription(description);*/
-        
 		
 	
 		
