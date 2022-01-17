@@ -24,7 +24,7 @@ public class BankAccount {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
 	
-	private String bankName;
+	private String bankName ;
 	
 	private String ifscCode;
 	
@@ -35,6 +35,7 @@ public class BankAccount {
 
 	public void setWallet(Wallet wallet2) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 	
