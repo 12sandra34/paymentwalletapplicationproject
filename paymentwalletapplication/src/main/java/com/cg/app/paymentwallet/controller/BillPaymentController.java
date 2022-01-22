@@ -16,7 +16,10 @@ import com.cg.app.paymentwallet.exception.BillPaymentNotFoundException;
 import com.cg.app.paymentwallet.service.BillPaymentService;
 import com.cg.app.paymentwallet.service.TransactionService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class BillPaymentController {
 	
 	@Autowired
@@ -27,7 +30,8 @@ public class BillPaymentController {
 	@PostMapping("/addBillPayment")
 	
 	public BillPayment addBillPayment(@RequestBody BillPayment billPayment)  {
-		
+
+		log.info("adding billpayment");
 		return billPaymentService.addBillPayment(billPayment);
 	}
 	
@@ -35,7 +39,7 @@ public class BillPaymentController {
     @GetMapping("/getBillPayment")
     
 	public List<BillPayment>  getAllBillPaymentListHandler()throws BillPaymentNotFoundException{
-		
+		log.info("get bill");
 		return billPaymentService.viewBillPayment();
 	
     }
@@ -44,7 +48,7 @@ public class BillPaymentController {
     @GetMapping("/viewBillPaymentDetails/{billId}")
     
 	public BillPayment  viewBenificiaryDetailsHandler(@PathVariable Integer billId) throws BillPaymentNotFoundException{
-		
+		log.info("view bill");
 		return billPaymentService.viewBill(billId);
 	}
 

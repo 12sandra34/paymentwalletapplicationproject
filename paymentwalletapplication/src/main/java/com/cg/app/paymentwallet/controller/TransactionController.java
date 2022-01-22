@@ -13,7 +13,10 @@ import com.cg.app.paymentwallet.entity.Transaction;
 import com.cg.app.paymentwallet.exception.TransactionDetailsNotFoundException;
 import com.cg.app.paymentwallet.service.TransactionService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @RestController
+@Slf4j
 public class TransactionController {
 	
 	@Autowired
@@ -25,14 +28,14 @@ public class TransactionController {
 	
 	public Transaction addTransactionHandler(@RequestBody Transaction transaction,@PathVariable("fromWalletId") Integer WalletId,@PathVariable("toWalletId") Integer WalletIds) {
 		
-		
+		log.info("adding transaction details ");
 		return transactionService.addTransaction(transaction);
 	}
 	
 	
 	@GetMapping("/viewAllTransaction")
     public List<Transaction>  viewAllTransactioListHandler()throws TransactionDetailsNotFoundException{
-		
+		log.info("view transactions");
 		return transactionService.viewAllTransaction();
 
 }

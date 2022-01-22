@@ -14,10 +14,13 @@ import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 import com.cg.app.paymentwallet.repository.BankAccountRepository;
 import com.cg.app.paymentwallet.repository.CustomerRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 
 
 @Service
+@Slf4j
 public class BankAccountServiceImpl  implements BankAccountService{
 	
 	@Autowired
@@ -27,6 +30,7 @@ public class BankAccountServiceImpl  implements BankAccountService{
 
 	@Override
 	public BankAccount addAccount(BankAccount account) {
+		log.info("Bank account added");
 		return accountRepo.save(account);
 	}
 
@@ -40,21 +44,25 @@ public class BankAccountServiceImpl  implements BankAccountService{
 		BankAccount account= opt.get();
 		
 		accountRepo.delete(account);
+		log.info("bank account deleted");
 		
 		return account;
 	
 	}else
+		log.error("bank account does not exist");
 		throw new AccountNotFoundException("Account does not exist with the account number"+accno);
 	}
 
 	@Override
 	public BankAccount viewAccount(int accno) throws AccountNotFoundException {
+		log.info("here is account details");
 		return accountRepo.findById(accno)
 				.orElseThrow(() -> new AccountNotFoundException("Account does not exist..") );
 	}
 
 	@Override
 	public List<BankAccount> viewAllAccounts() {
+		log.info("here is all bank account details");
 		return accountRepo.findAll();
 	}
 
@@ -65,8 +73,10 @@ public class BankAccountServiceImpl  implements BankAccountService{
             Customer customer= customerRepo.findByMobileNo(mobileNo);
 		
 		
-		    if(customer == null)
+		    if(customer == null) {
+		    	log.error("could not  link due to invalid mobile number");
 			    throw new CustomerNotFoundException("invalid Mobile number");
+		    }
 		    else{
 		
 			   Optional<BankAccount> opt= accountRepo.findById(accountNo);
@@ -79,12 +89,14 @@ public class BankAccountServiceImpl  implements BankAccountService{
 				Wallet wallet= customer.getWallet();
 				
 				 account.setWallet(wallet);
+				 log.info("account linked with wallet");
 				
 				return accountRepo.save(account);
 				
 		
 				
 			}else
+				log.error("declined due to invalid account number");
 				throw new AccountNotFoundException("Invalid account number");
 			
 			

@@ -38,7 +38,7 @@ public class BankAccountController {
 	
 	@PostMapping("/createBankAccount")
 	public BankAccount createAccountHandler(@Valid @RequestBody BankAccount account) {
-	
+	   log.info("creating bank account");
 		return  bankService.addAccount(account);
 		
 		
@@ -48,7 +48,7 @@ public class BankAccountController {
 	
 	@PutMapping("/linkWalletToAccount/{accountNo}/{mobileNo}")
 	public BankAccount attachWalletToAccountHandler(@PathVariable Integer accountNo,@PathVariable String mobileNo) throws AccountNotFoundException, CustomerNotFoundException {
-		
+		log.info("linking bank account with wallet");
 		return bankService.linkAccountToWallet(accountNo, mobileNo);
 		
 	}
@@ -57,7 +57,7 @@ public class BankAccountController {
 	@DeleteMapping("/removeAccount/{accountNo}")
 			
 	public BankAccount removeBankAccountHandler(@PathVariable Integer accountNo ) throws AccountNotFoundException,CustomerNotFoundException {
-		
+		log.info("removing the bank account");
 		return bankService.removeBankAccount(accountNo); 
          
 		 
@@ -66,7 +66,7 @@ public class BankAccountController {
 	
 	@GetMapping("/viewAccount/{accountNo}")
     public BankAccount viewAccountHandler(@PathVariable Integer accountNo)throws AccountNotFoundException{
-		
+		log.info("to view the bank account");
 		return bankService.viewAccount(accountNo);
 	}
 	
@@ -74,6 +74,8 @@ public class BankAccountController {
 	
 	@GetMapping("/viewAllAccount")
     public List<BankAccount> ViewAllAccountHandler() {
+		
+		log.info("to view all bank account");
 		
 		return bankService.viewAllAccounts();
 	}

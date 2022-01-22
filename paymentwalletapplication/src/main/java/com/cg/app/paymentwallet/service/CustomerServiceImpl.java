@@ -54,10 +54,11 @@ public class CustomerServiceImpl implements CustomerService {
 		
 	 	if(customer == null)
 	 	{
-	 		log.debug("invalid username or password...");
+	 		log.error("invalid username or password");
 	 		throw new CustomerNotFoundException("Invlaid username or password...");
 	 	}else
 	 		
+	 		log.info("Welcome user");
 	 		return customer;
 	}
 	
@@ -73,13 +74,13 @@ public class CustomerServiceImpl implements CustomerService {
 			Customer customer = opt.get();
 			
 			customerRepo.delete(customer);
-			
+			log.info("deleted the details");
 			return customer;
 			
 		}
 		
 		else {
-			
+			 log.error("customer doesnot exist");
 			throw new CustomerNotFoundException("customer does not exist with customerId:"+customerId);
 		}
 	}
@@ -118,6 +119,7 @@ public class CustomerServiceImpl implements CustomerService {
 	//getting all customer list
 	@Override
 	public List<Customer> getAllCustomerList() {
+		log.info("All customer details are here");
 		return customerRepo.findAll();
 	}
 	

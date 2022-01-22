@@ -75,7 +75,7 @@ public class CustomerController {
     @GetMapping("/getCustomer")
     
 	public List<Customer>  getAllCustomerListHandler()throws CustomerNotFoundException{
-		
+		log.info("viewing all customer details");
 		return customerService.getAllCustomerList();
 
      }
@@ -83,7 +83,7 @@ public class CustomerController {
     @PutMapping("/addAmount/{mobileNo}/{amount}")
     public Customer addAmountToWalletHandler(@PathVariable String mobileNo,@PathVariable BigDecimal amount)throws CustomerNotFoundException{
       
-    	
+    	log.info("adding amount to wallet");
     	return customerService.addAmountToWallet(mobileNo,amount);
     	
     	

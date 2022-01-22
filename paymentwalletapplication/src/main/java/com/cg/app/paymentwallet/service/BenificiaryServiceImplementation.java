@@ -22,7 +22,7 @@ public class BenificiaryServiceImplementation implements BenificiaryService{
 
 	@Override
 	public BenificiaryDetails addBenificiary(BenificiaryDetails benificiaryDetails) {
-		log.info("added successfully");
+		log.info("benificiary added successfully");
 		return benificiaryRepo.save(benificiaryDetails);
 		
 		
@@ -32,20 +32,20 @@ public class BenificiaryServiceImplementation implements BenificiaryService{
 
 	@Override
 	public BenificiaryDetails deleteBenificiaryDetails(Integer benificiaryId) throws BenificiaryDetailsNotFoundException {
-		
+		log.info("checking benificiarydetails");
 		
 		Optional<BenificiaryDetails> opt= benificiaryRepo.findById(benificiaryId);
 		  
 		    if(opt.isPresent()) {
-		    	log.info("checking benificiarydetails");
+		    	
 		    	BenificiaryDetails benificiaryDetails =opt.get();
 		    	benificiaryRepo.delete(benificiaryDetails);
-		    	log.debug("successfully record has been deleted");
+		    	log.info("successfully record has been deleted");
 		    	return benificiaryDetails;
 		    	
 				
 			}else
-				log.debug("details not existing");
+				log.error("details not existing");
 				throw new BenificiaryDetailsNotFoundException("BenificiaryDetails does not exist with the benificiaryId :"+benificiaryId);
 		    	
 		    
@@ -55,14 +55,14 @@ public class BenificiaryServiceImplementation implements BenificiaryService{
 
 	@Override
 	public BenificiaryDetails viewBenificiary(Integer benificiaryId) throws BenificiaryDetailsNotFoundException {
-		
+		log.info("here is the benificiary details");
 		return benificiaryRepo.findById(benificiaryId)
 				.orElseThrow(() -> new BenificiaryDetailsNotFoundException("Benificiary not exist..") );
 	}
 
 	@Override
 	public List<BenificiaryDetails> viewAllBenificiary() {
-		
+		log.info("here is all the benificiary details");
 		return benificiaryRepo.findAll();
 		
 	}
