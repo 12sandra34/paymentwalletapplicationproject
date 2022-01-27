@@ -14,8 +14,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 	
 
-	@ExceptionHandler(BenificiaryDetailsNotFoundException.class)
-	public ResponseEntity<MyErrorDetails> handleCNFE(BenificiaryDetailsNotFoundException exp,WebRequest wr) {
+	@ExceptionHandler(CustomerNotFoundException.class)
+	public ResponseEntity<MyErrorDetails> handleCNFE(CustomerNotFoundException exp,WebRequest wr) {
 		
 		MyErrorDetails err=new MyErrorDetails();
 		

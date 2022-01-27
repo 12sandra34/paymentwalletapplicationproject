@@ -1,21 +1,11 @@
 package com.cg.app.paymentwallet.service;
 
 import java.math.BigDecimal;
-
-
 import java.util.List;
 import java.util.Optional;
-
-import javax.transaction.Transactional;
-
-import org.checkerframework.checker.nullness.Opt;
-import org.hibernate.TransactionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-
 import com.cg.app.paymentwallet.entity.Customer;
-import com.cg.app.paymentwallet.entity.Wallet;
 import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 import com.cg.app.paymentwallet.repository.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +16,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	private CustomerRepository customerRepo;
+	
 	
 	
 	
@@ -85,37 +76,6 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 	}
 	
-	
-    
-	//adding amount to wallet
-	@Override
-	@Transactional
-	public Customer addAmountToWallet(String mobileNO , BigDecimal amount) throws CustomerNotFoundException {
-		
-		Customer customer= customerRepo.findByMobileNo(mobileNO);
-		
-			if(customer==null) {
-			
-				throw new CustomerNotFoundException("customer does not exist");
-			
-			}
-			else {
-				
-				customer.getWallet().getBalance().add(amount);
-				return customer;
-			}
-			
-			
-		
-		
-		
-		
-		
-		
-		
-	}
-	
-    
 	//getting all customer list
 	@Override
 	public List<Customer> getAllCustomerList() {
@@ -137,7 +97,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		if(customer == null) {
 			
-			log.debug("Customer not found with the mobile number "+mobileNo);
+			log.error("Customer not found with the mobile number "+mobileNo);
 			
 			throw new CustomerNotFoundException("Customer does not exist with the give mobile number :"+mobileNo);
 			

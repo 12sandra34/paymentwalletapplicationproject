@@ -1,11 +1,8 @@
 package com.cg.app.paymentwallet.controller;
 
 import java.util.List;
-
-
 import javax.security.auth.login.AccountNotFoundException;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.app.paymentwallet.entity.BankAccount;
-import com.cg.app.paymentwallet.entity.BenificiaryDetails;
-import com.cg.app.paymentwallet.exception.BenificiaryDetailsNotFoundException;
 import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
 import com.cg.app.paymentwallet.service.BankAccountService;
-import com.cg.app.paymentwallet.service.CustomerService;
-
 import lombok.extern.slf4j.Slf4j;
 
 
