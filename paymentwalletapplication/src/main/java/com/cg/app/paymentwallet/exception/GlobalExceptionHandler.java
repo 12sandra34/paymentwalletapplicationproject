@@ -14,8 +14,8 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class GlobalExceptionHandler {
 	
 
-	@ExceptionHandler(CustomerNotFoundException.class)
-	public ResponseEntity<MyErrorDetails> handleCNFE(CustomerNotFoundException exp,WebRequest wr) {
+	@ExceptionHandler(CustomerException.class)
+	public ResponseEntity<MyErrorDetails> handleCNFE(CustomerException exp,WebRequest wr) {
 		
 		MyErrorDetails err=new MyErrorDetails();
 		
@@ -27,6 +27,9 @@ public class GlobalExceptionHandler {
 		
 		return re;
 	}
+	
+
+	
 	
 
 	//to handle Not found exception (wrong uri)

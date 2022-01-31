@@ -4,19 +4,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class WalletException extends Exception {
+public class InvalidInputException extends Exception {
 
-	public WalletException() {
-		super();
-		
-	}
-
-	public WalletException(String message) {
-		super(message);
+	public InvalidInputException() {
 		
 	}
 	
-	
+   public InvalidInputException(String message) {
+	   
+	   super(message);
+		
+	}
+
 	
 
 }

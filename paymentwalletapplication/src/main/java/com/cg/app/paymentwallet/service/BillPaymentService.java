@@ -4,11 +4,11 @@ import java.util.List;
 
 import com.cg.app.paymentwallet.entity.BillPayment;
 import com.cg.app.paymentwallet.exception.BillPaymentNotFoundException;
+import com.cg.app.paymentwallet.exception.InvalidInputException;
 
 public interface BillPaymentService {
 	
-	public BillPayment addBillPayment(BillPayment billPayment);
-	public BillPayment viewBill(Integer billId) throws BillPaymentNotFoundException;
+	public BillPayment addBillPayment(BillPayment billPayment)throws InvalidInputException;
 	public List<BillPayment> viewBillPayment();
 
 }

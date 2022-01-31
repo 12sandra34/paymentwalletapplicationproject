@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
@@ -31,8 +32,9 @@ public class BillPayment {
 	private LocalDateTime paymentDate;
 	@Enumerated(EnumType.STRING)
     private BillType billtype;
-    @OneToOne(cascade=CascadeType.ALL)
-    private Wallet wallet;
+	@ManyToOne(cascade = CascadeType.ALL)
+	private Wallet wallet;
+	
 
 }
 

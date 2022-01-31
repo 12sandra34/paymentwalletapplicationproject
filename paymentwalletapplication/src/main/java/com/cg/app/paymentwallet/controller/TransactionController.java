@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.app.paymentwallet.entity.Transaction;
+import com.cg.app.paymentwallet.exception.InvalidInputException;
 import com.cg.app.paymentwallet.exception.TransactionDetailsNotFoundException;
 import com.cg.app.paymentwallet.service.TransactionService;
 
@@ -24,20 +25,20 @@ public class TransactionController {
 	
 	
 	
-	@PostMapping("/addTransaction/{fromWalletId}/{toWalletId}")
 	
-	public Transaction addTransactionHandler(@RequestBody Transaction transaction,@PathVariable("fromWalletId") Integer WalletId,@PathVariable("toWalletId") Integer WalletIds) {
-		
-		log.info("adding transaction details ");
-		return transactionService.addTransaction(transaction);
+	@PostMapping("/addTransaction")
+	  public Transaction addTranscationHandler(@RequestBody Transaction transaction)throws InvalidInputException
+	  {
+		log.info("adding transactions");
+		  return transactionService.addTransaction(transaction);
+		 
+	  }	
+	  
+	@GetMapping("/viewAllTransactions")
+	public List<Transaction> viewAllTransactions() throws InvalidInputException{
+		log.info("view transactions by wallet");
+		return transactionService.viewAllTransactions();	
 	}
 	
-	
-	@GetMapping("/viewAllTransaction")
-    public List<Transaction>  viewAllTransactioListHandler()throws TransactionDetailsNotFoundException{
-		log.info("view transactions");
-		return transactionService.viewAllTransaction();
-
-}
 
 }

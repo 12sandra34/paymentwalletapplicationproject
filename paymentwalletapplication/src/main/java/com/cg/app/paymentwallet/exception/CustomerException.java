@@ -4,16 +4,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class CustomerNotFoundException extends RuntimeException {
+public class CustomerException extends RuntimeException {
 
-	public CustomerNotFoundException() {
+	public CustomerException() {
 		// TODO Auto-generated constructor stub
 	}
 	
 	
 	
 	
-	public CustomerNotFoundException(String message) {
+	public CustomerException(String message) {
 		
 		super(message);
 	}

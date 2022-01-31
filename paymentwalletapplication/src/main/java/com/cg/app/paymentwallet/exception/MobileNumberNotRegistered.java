@@ -4,17 +4,21 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class WalletException extends Exception {
+public class MobileNumberNotRegistered  extends Exception{
 
-	public WalletException() {
-		super();
+	public MobileNumberNotRegistered() {
+		
 		
 	}
-
-	public WalletException(String message) {
-		super(message);
+	
+	
+public MobileNumberNotRegistered(String message) {
+		
+	super(message);
 		
 	}
+	
+	
 	
 	
 	

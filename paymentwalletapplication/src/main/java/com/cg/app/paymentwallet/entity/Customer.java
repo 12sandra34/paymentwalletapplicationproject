@@ -31,6 +31,7 @@ public class Customer {
 	@Size(min=3,max=50 ,message="name is mandatory ")
 	private String name;
 	
+    
 	@NotNull
 	@Pattern( regexp ="[6-9][0-9]{9}" )
 	@Size(min=10,max=10,message="mobile number length should be 10")

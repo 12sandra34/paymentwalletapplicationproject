@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.security.auth.login.AccountNotFoundException;
 import com.cg.app.paymentwallet.entity.BankAccount;
-import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
+import com.cg.app.paymentwallet.exception.CustomerException;
 
 
 
@@ -18,6 +18,6 @@ public interface BankAccountService {
 	
 	public List<BankAccount> viewAllAccounts();
 	
-	public BankAccount linkAccountToWallet(Integer accountNo,String mobileNo)throws AccountNotFoundException,CustomerNotFoundException;
+	public BankAccount linkAccountToWallet(Integer accountNo,String mobileNo)throws AccountNotFoundException,CustomerException;
 
 }

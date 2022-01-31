@@ -4,16 +4,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class WalletException extends Exception {
+public class InsufficientBalanceException extends Exception {
 
-	public WalletException() {
-		super();
+	public InsufficientBalanceException() {
 		
 	}
 
-	public WalletException(String message) {
+	public InsufficientBalanceException(String message) {
 		super(message);
-		
 	}
 	
 	

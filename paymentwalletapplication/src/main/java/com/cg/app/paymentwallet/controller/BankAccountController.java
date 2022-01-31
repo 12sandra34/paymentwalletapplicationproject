@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.cg.app.paymentwallet.entity.BankAccount;
-import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
+import com.cg.app.paymentwallet.exception.CustomerException;
 import com.cg.app.paymentwallet.service.BankAccountService;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +40,7 @@ public class BankAccountController {
 	
 	
 	@PutMapping("/linkWalletToAccount/{accountNo}/{mobileNo}")
-	public BankAccount attachWalletToAccountHandler(@PathVariable Integer accountNo,@PathVariable String mobileNo) throws AccountNotFoundException, CustomerNotFoundException {
+	public BankAccount attachWalletToAccountHandler(@PathVariable Integer accountNo,@PathVariable String mobileNo) throws AccountNotFoundException, CustomerException {
 		log.info("linking bank account with wallet");
 		return bankService.linkAccountToWallet(accountNo, mobileNo);
 		
@@ -49,7 +49,7 @@ public class BankAccountController {
 	
 	@DeleteMapping("/removeAccount/{accountNo}")
 			
-	public BankAccount removeBankAccountHandler(@PathVariable Integer accountNo ) throws AccountNotFoundException,CustomerNotFoundException {
+	public BankAccount removeBankAccountHandler(@PathVariable Integer accountNo ) throws AccountNotFoundException,CustomerException {
 		log.info("removing the bank account");
 		return bankService.removeBankAccount(accountNo); 
          

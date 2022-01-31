@@ -1,10 +1,14 @@
 package com.cg.app.paymentwallet.entity;
 
 import java.math.BigDecimal;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +24,5 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
     private Integer walletId;
 	private BigDecimal balance;
-    
+	
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.cg.app.paymentwallet.entity.BankAccount;
 import com.cg.app.paymentwallet.entity.Customer;
 import com.cg.app.paymentwallet.entity.Wallet;
-import com.cg.app.paymentwallet.exception.CustomerNotFoundException;
+import com.cg.app.paymentwallet.exception.CustomerException;
 import com.cg.app.paymentwallet.repository.BankAccountRepository;
 import com.cg.app.paymentwallet.repository.CustomerRepository;
 
@@ -68,14 +68,14 @@ public class BankAccountServiceImpl  implements BankAccountService{
 
 	@Override
 	public BankAccount linkAccountToWallet(Integer accountNo, String mobileNo)
-			throws AccountNotFoundException, CustomerNotFoundException {
+			throws AccountNotFoundException, CustomerException {
 		
             Customer customer= customerRepo.findByMobileNo(mobileNo);
 		
 		
 		    if(customer == null) {
 		    	log.error("could not  link due to invalid mobile number");
-			    throw new CustomerNotFoundException("invalid Mobile number");
+			    throw new CustomerException("invalid Mobile number");
 		    }
 		    else{
 		
